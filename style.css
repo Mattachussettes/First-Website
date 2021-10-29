@@ -1,0 +1,27 @@
+body {
+  background: linear-gradient(240deg, skyblue, lightgreen);
+  font-family: "Courier New", Courier, monospace;
+  text-align: center;
+  color: aliceblue;
+}
+
+button {
+  background: linear-gradient(skyblue, yellowgreen);
+  border: yellowgreen;
+}
+
+@import url("https://www.pexels.com/search/videos/technology/");
+body {
+  margin: 10%;
+  padding: 0;
+}
+
+#myvideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  object-fit: cover;
+}
