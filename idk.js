@@ -1,20 +1,6 @@
-<script>
+const colorPicker = document.getElementById("colorpicker");
+const body = document.querySelector("body");
 
-var myMusic= document.getElementById("music");
-
-function play() {
-
-myMusic.play();
-
-}
-
- 
-
-function pause() {
-
-myMusic.pause();
-
-}
-
-</script>
-
+setInterval(function () {
+  body.style.color = colorPicker.value;
+}, 1000);
