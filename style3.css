@@ -1,91 +1,97 @@
 body {
-  background: orange;
+  font: "Raleway", sans-serif;
+  color: rgba(0, 0, 0, 0.5);
   text-align: center;
-  font-family: "Open Sans", sans-serif;
-}
-.intro {
-  margin: 30px 0px;
-  font-weight: bold;
-}
-
-h1 {
-  color: #ffffff;
   text-transform: uppercase;
-  font-weight: 800;
+  letter-spacing: 0.5em;
+  top: 15%;
+  background: linear-gradient(to right, red, yellow);
 }
 
-p {
-  font-weight: 600;
+#todo-wrap input {
+  box-sizing: border-box;
+}
+#todo-wrap input {
+  padding: 10px;
+}
+#todo-wrap input[type="button"],
+#todo-wrap input[type="submit"] {
+  color: #fff;
+  cursor: pointer;
 }
 
-#first {
+#todo-wrap {
+  max-width: 500px;
+  background: #f2f2f2;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+#todo-wrap h1 {
+  font-size: 1.5em;
+  margin: 0;
+  color: #333;
+}
+
+#todo-add {
+  display: flex;
+}
+#todo-item {
+  width: 85%;
+}
+#todo-save {
+  width: 15%;
+  background: #5866cf;
+  border: 2px solid #5866cf;
+}
+
+#todo-del {
+  margin: 10px 0;
+}
+#todo-del input {
+  background: #cf585c;
+  border: 2px solid #cf585c;
+}
+
+.todo-row {
+  display: flex;
   margin-top: 10px;
-  color: #ffcd5d;
 }
 
-#second {
-  color: #51df70;
+.todo-item {
+  width: 100%;
+  background: #fff;
+  border: 1px solid #eee;
+  padding: 10px;
 }
-#third {
-  color: #025f70;
-  margin-bottom: 30px;
+.todo-item.cx {
+  background: #ffe1d7;
+  text-decoration: line-through;
 }
-
-#enter {
-  border: none;
-  padding: 5px 15px;
-  border-radius: 5px;
-  color: red;
-  background-color: #025f70;
-  transition: all 0.75s ease;
-  font-weight: normal;
+.todo-item.done {
+  background: #dcffd7;
 }
 
-#enter:hover {
-  background-color: #02798f;
-  color: #ffcd5d;
+.todo-cx,
+.todo-ok {
+  width: 50px;
+}
+.todo-cx {
+  background: #cf585c;
+  border: 2px solid #cf585c;
+}
+.todo-ok {
+  background: #4aa53d;
+  border: 2px solid #4aa53d;
 }
 
-ul {
-  text-align: left;
-  margin-top: 20px;
-}
-li {
-  list-style: none;
-  padding: 10px 20px;
-  color: #ffffff;
-  text-transform: capitalize;
-  font-weight: 600;
-  border: 2px solid yellowgreen;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  background: yellowgreen;
-}
-li:hover {
-  background: #76cfe0;
-}
-
-li > button {
-  font-weight: normal;
-  background: none;
-  border: none;
-  float: right;
-  color: #025f70;
-  font-weight: 800;
-}
-
+html,
+body,
 input {
-  border-radius: 5px;
-  min-width: 65%;
-  padding: 5px;
-  border: none;
+  font-family: arial, sans-serif;
 }
-
-.done {
-  background: #51df70 !important;
-  color: #00891e;
-}
-
-.delete {
-  display: none;
+html,
+body {
+  padding: 0;
+  margin: 0;
 }

@@ -1,57 +1,103 @@
-const colorPicker = document.getElementById("colorpicker");
-const body = document.querySelector("body");
+var todo = {
+  data: [],
 
-setInterval(function () {
-  body.style.color = colorPicker.value;
-}, 1000);
+  load: function () {
+    if (localStorage.list == undefined) {
+      localStorage.list = "[]";
+    }
 
-var enterButton = document.getElementById("enter");
-var input = document.getElementById("userInput");
-var ul = document.querySelector("ul");
-var item = document.getElementsByTagName("li");
+    todo.data = JSON.parse(localStorage.list);
+    todo.list();
+  },
 
-function inputLength() {
-  return input.value.length;
-}
+  save: function () {
+    localStorage.list = JSON.stringify(todo.data);
+    todo.list();
+  },
 
-function listLength() {
-  return item.length;
-}
+  list: function () {
+    var container = document.getElementById("todo-list");
+    container.innerHTML = "";
 
-function createListElement() {
-  var li = document.createElement("li");
-  li.appendChild(document.createTextNode(input.value));
-  ul.appendChild(li);
-  input.value = "";
+    if (todo.data.length > 0) {
+      var row = "",
+        el = "";
+      for (var key in todo.data) {
+        row = document.createElement("div");
+        row.classList.add("todo-row");
+        row.dataset.id = key;
 
-  function crossOut() {
-    li.classList.toggle("done");
-  }
+        el = document.createElement("div");
+        el.classList.add("todo-item");
+        if (todo.data[key][1] == 1) {
+          el.classList.add("done");
+        }
+        if (todo.data[key][1] == 2) {
+          el.classList.add("cx");
+        }
+        el.innerHTML = todo.data[key][0];
+        row.appendChild(el);
 
-  li.addEventListener("click", crossOut);
+        el = document.createElement("input");
+        el.setAttribute("type", "button");
+        el.value = "\u2716";
+        el.classList.add("todo-cx");
+        el.addEventListener("click", function () {
+          todo.status(this, 2);
+        });
+        row.appendChild(el);
 
-  var dBtn = document.createElement("button");
-  dBtn.appendChild(document.createTextNode("X"));
-  li.appendChild(dBtn);
-  dBtn.addEventListener("click", deleteListItem);
+        el = document.createElement("input");
+        el.setAttribute("type", "button");
+        el.value = "\u2714";
+        el.classList.add("todo-ok");
+        el.addEventListener("click", function () {
+          todo.status(this, 1);
+        });
+        row.appendChild(el);
 
-  function deleteListItem() {
-    li.classList.add("delete");
-  }
-}
+        container.appendChild(row);
+      }
+    }
+  },
 
-function addListAfterClick() {
-  if (inputLength() > 0) {
-    createListElement();
-  }
-}
+  add: function () {
+    let item = document.getElementById("todo-item");
+    todo.data.push([item.value, 0]);
+    item.value = "";
+    todo.save();
+  },
 
-function addListAfterKeypress(event) {
-  if (inputLength() > 0 && event.which === 13) {
-    createListElement();
-  }
-}
+  status: function (el, stat) {
+    todo.data[el.parentElement.dataset.id][1] = stat;
+    todo.save();
+  },
 
-enterButton.addEventListener("click", addListAfterClick);
+  del: function (type) {
+    if (confirm("Delete tasks?")) {
+      if (type == 0) {
+        todo.data = [];
+        todo.save();
+      } else {
+        todo.data = todo.data.filter((row) => row[1] == 0);
+        todo.save();
+      }
+    }
+  },
+};
 
-input.addEventListener("keypress", addListAfterKeypress);
+window.addEventListener("load", function () {
+  document.getElementById("todo-delall").addEventListener("click", function () {
+    todo.del(0);
+  });
+  document.getElementById("todo-delcom").addEventListener("click", function () {
+    todo.del(1);
+  });
+  document
+    .getElementById("todo-add")
+    .addEventListener("submit", function (evt) {
+      evt.preventDefault();
+      todo.add();
+    });
+  todo.load();
+});
