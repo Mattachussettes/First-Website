@@ -74,8 +74,9 @@ var todo = {
   },
 
   del: function (type) {
-    if (confirm("Delete tasks?")) {
+    if (confirm("Are you sure about that?")) {
       if (type == 0) {
+        s;
         todo.data = [];
         todo.save();
       } else {
