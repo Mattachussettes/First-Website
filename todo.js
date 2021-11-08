@@ -1,3 +1,10 @@
+const colorPicker = document.getElementById("colorpicker");
+const body = document.querySelector("body");
+
+setInterval(function () {
+  body.style.color = colorPicker.value;
+}, 1000);
+
 var enterButton = document.getElementById("enter");
 var input = document.getElementById("userInput");
 var ul = document.querySelector("ul");

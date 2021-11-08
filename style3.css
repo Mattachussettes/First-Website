@@ -1,9 +1,8 @@
 body {
-  background-color: orange;
+  background: orange;
   text-align: center;
   font-family: "Open Sans", sans-serif;
 }
-
 .intro {
   margin: 30px 0px;
   font-weight: bold;
