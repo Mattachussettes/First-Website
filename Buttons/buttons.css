@@ -1,0 +1,40 @@
+html {
+  height: 100%;
+  display: flex;
+}
+
+body {
+  position: relative;
+  margin: auto;
+  background: linear-gradient(to right, red, yellow);
+  perspective: 500px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  transform: rotatex(10deg);
+  animation: alternate 6s linear infinite;
+}
+
+button {
+  display: block;
+  position: relative;
+  margin: 0.5em 0;
+  padding: 0.8em 2.2em;
+  cursor: pointer;
+
+  background: #ffffff;
+  border: none;
+  border-radius: 0.4em;
+
+  text-transform: uppercase;
+  font-size: 1.4em;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+
+  mix-blend-mode: color-dodge;
+  perspective: 500px;
+  transform-style: preserve-3d;
+}
