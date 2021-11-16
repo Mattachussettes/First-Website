@@ -5,6 +5,16 @@ body {
   color: aliceblue;
 }
 
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
 button {
   display: inline-block;
   padding: 0.3em 1.2em;
@@ -17,7 +27,13 @@ button {
   color: white;
   background-color: #4eb5f1;
   text-align: center;
-  transition: all 0.2s;
+
+  transition: all 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+button:hover {
+  background-color: #71ec12;
+  transform: scale(1.2);
 }
 
 @import url("https://www.pexels.com/search/videos/technology/");
