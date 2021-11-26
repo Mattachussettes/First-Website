@@ -57,14 +57,70 @@
       <button>
         <a href="../simple-generator-meme/simple-generator-meme.html"> Meme </a>
       </button>
+
       <button>
         <a href="../musicplayer/musicplayer.html">Music Player</a>
       </button>
 
-      <button><a href="/Discovery/discovery.html">Discovery</a></button>
+      <button>
+        <a href="/Discovery/discovery.html">Discovery</a>
+      </button>
+
+      <button>
+        <a href="/countdown/countdown.html">Countdown</a>
+      </button>
+
+      <button>
+        <a href="/password/password.html">Simple Password generator</a>
+      </button>
     </div>
+
     <video autoplay muted loop id="myvideo">
       <source src="video.mp4" type="video/mp4" />
     </video>
+
+    <button id="demo" onclick="myFunction()">Countdown</button>
   </body>
+  <script>
+    function myFunction() {
+      var input = prompt(
+        "When do you... I don't remember the answer",
+        "MMM DD, YYYY HH:MM:SS"
+      );
+
+      // date we're counting down to
+      var countDownDate = new Date(input).getTime();
+
+      // Update every 1 second
+      var x = setInterval(function () {
+        // today's date and time
+        var now = new Date().getTime();
+
+        //distance between now and the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Display the result
+        document.getElementById("demo").innerHTML =
+          days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+        // count down is finished, write
+        if (distance < 0) {
+          clearInterval(x);
+          document.getElementById("demo").innerHTML = "Happy Birthday!!!";
+        }
+      }, 1000);
+
+      document.getElementById("demo").addEventListener("click", (event) => {
+        clearInterval(x);
+      });
+    }
+  </script>
 </html>

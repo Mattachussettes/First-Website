@@ -3,7 +3,7 @@ body {
   margin: 0;
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(skyblue, lightgreen);
+  background: linear-gradient(red, orange, yellow);
 }
 .panel {
   height: 100vh;
@@ -17,7 +17,7 @@ body {
   padding: 5px;
   width: 80vw;
   height: 10vh;
-  background-color: #c7dddf;
+  background-color: skyblue;
   font-size: x-large;
   text-align: center;
 }
@@ -43,11 +43,11 @@ body {
   width: 15vw;
   height: 10vh;
   font-size: larger;
-  background-color: lightskyblue;
+  background-color: green;
   border-radius: 25%;
 }
 .option:hover {
-  background-color: lightgoldenrodyellow;
+  background-color: greenyellow;
 }
 .navigation {
   width: 80vw;
@@ -67,5 +67,5 @@ body {
   font-size: larger;
 }
 .evaluate {
-  background-color: #50dbb4;
+  background-color: salmon;
 }
