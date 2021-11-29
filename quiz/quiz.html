@@ -1,29 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html>
+  <head lang="en">
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="quiz.css" />
+    <title>Quiz</title>
+    <link rel="stylesheet" type="text/css" href="quiz.css" />
   </head>
   <body>
-    <div class="panel">
-      <div class="result"></div>
-      <div class="question-container" id="question">Question goes here.</div>
-      <div class="option-container">
-        <button class="option" onclick="" id="op1">option1</button>
+    <div class="grid">
+      <div id="quiz">
+        <h1>Quiz</h1>
+        <hr style="margin-bottom: 20px" />
 
-        <button class="option" id="op2">option2</button>
+        <p id="question"></p>
 
-        <button class="option" id="op3">option3</button>
+        <div class="buttons">
+          <button id="btn0"><span id="choice0"></span></button>
+          <button id="btn1"><span id="choice1"></span></button>
+          <button id="btn2"><span id="choice2"></span></button>
+          <button id="btn3"><span id="choice3"></span></button>
+        </div>
 
-        <button class="option" id="op4">option4</button>
-      </div>
-      <div class="navigation">
-        <button class="evaluate">Evaluate</button>
-        <button class="next">Next</button>
+        <hr style="margin-top: 50px" />
+        <footer>
+          <p id="progress">Question x of y</p>
+        </footer>
       </div>
     </div>
+
     <script src="quiz.js"></script>
   </body>
 </html>

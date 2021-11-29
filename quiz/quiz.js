@@ -1,121 +1,104 @@
-// Questions will be asked
-const Questions = [
-  {
-    id: 0,
-    q: "What is capital of Slovakia?",
-    a: [
-      { text: "Martin", isCorrect: false },
-      { text: "Brno", isCorrect: false },
-      { text: "Bratislava", isCorrect: true },
-      { text: "Zvolen", isCorrect: false },
-    ],
-  },
-  {
-    id: 1,
-    q: "What is the best car ever?",
-    a: [
-      { text: "Lamborgini", isCorrect: false, isSelected: false },
-      { text: "Porche", isCorrect: false },
-      { text: "Toyota", isCorrect: false },
-      { text: "Tesla", isCorrect: true },
-    ],
-  },
-  {
-    id: 2,
-    q: "Who is the president of the USA?",
-    a: [
-      { text: "Obama", isCorrect: false },
-      { text: "Babiš", isCorrect: false },
-      { text: "Biden", isCorrect: true },
-      { text: "Trump", isCorrect: false },
-    ],
-  },
+function Quiz(questions) {
+  this.score = 0;
+  this.questions = questions;
+  this.questionIndex = 0;
+}
+
+Quiz.prototype.getQuestionIndex = function () {
+  return this.questions[this.questionIndex];
+};
+
+Quiz.prototype.guess = function (answer) {
+  if (this.getQuestionIndex().isCorrectAnswer(answer)) {
+    this.score++;
+  }
+
+  this.questionIndex++;
+};
+
+Quiz.prototype.isEnded = function () {
+  return this.questionIndex === this.questions.length;
+};
+
+function Question(text, choices, answer) {
+  this.text = text;
+  this.choices = choices;
+  this.answer = answer;
+}
+
+Question.prototype.isCorrectAnswer = function (choice) {
+  return this.answer === choice;
+};
+
+function populate() {
+  if (quiz.isEnded()) {
+    showScores();
+  } else {
+    // show question
+    var element = document.getElementById("question");
+    element.innerHTML = quiz.getQuestionIndex().text;
+
+    // show options
+    var choices = quiz.getQuestionIndex().choices;
+    for (var i = 0; i < choices.length; i++) {
+      var element = document.getElementById("choice" + i);
+      element.innerHTML = choices[i];
+      guess("btn" + i, choices[i]);
+    }
+
+    showProgress();
+  }
+}
+
+function guess(id, guess) {
+  var button = document.getElementById(id);
+  button.onclick = function () {
+    quiz.guess(guess);
+    populate();
+  };
+}
+
+function showProgress() {
+  var currentQuestionNumber = quiz.questionIndex + 1;
+  var element = document.getElementById("progress");
+  element.innerHTML =
+    "Question " + currentQuestionNumber + " of " + quiz.questions.length;
+}
+
+function showScores() {
+  var gameOverHTML = "<h1>Result</h1>";
+  gameOverHTML += "<h2 id='score'> Your scores: " + quiz.score + "</h2>";
+  var element = document.getElementById("quiz");
+  element.innerHTML = gameOverHTML;
+}
+
+// create questions here
+var questions = [
+  new Question(
+    "What is capital of Slovakia??",
+    ["Martin", "Brno", "Bratislava", "Zvolen"],
+    "Bratislava"
+  ),
+  new Question(
+    "What is the best car ever?",
+    ["Lamborgini", "Porche", "Toyota", "Tesla"],
+    "Tesla"
+  ),
+  new Question(
+    "Who is the president of the USA?",
+    ["Obama", "Babiš", "Biden", "Trump"],
+    "Django"
+  ),
+  new Question("What is 2+2", ["5", "22", "44", "2"], "2"),
+  new Question(
+    "what is 785 * 999?",
+    ["458 548 246", "784 215", "475 556", "none"],
+    "475 556"
+  ),
 ];
 
-var start = true;
+// create quiz
+var quiz = new Quiz(questions);
 
-function iterate(id) {
-  var result = document.getElementsByClassName("result");
-  result[0].innerText = "";
-
-  const question = document.getElementById("question");
-
-  question.innerText = Questions[id].q;
-
-  const op1 = document.getElementById("op1");
-  const op2 = document.getElementById("op2");
-  const op3 = document.getElementById("op3");
-  const op4 = document.getElementById("op4");
-
-  op1.innerText = Questions[id].a[0].text;
-  op2.innerText = Questions[id].a[1].text;
-  op3.innerText = Questions[id].a[2].text;
-  op4.innerText = Questions[id].a[3].text;
-
-  op1.value = Questions[id].a[0].isCorrect;
-  op2.value = Questions[id].a[1].isCorrect;
-  op3.value = Questions[id].a[2].isCorrect;
-  op4.value = Questions[id].a[3].isCorrect;
-
-  var selected = "";
-
-  op1.addEventListener("click", () => {
-    op1.style.backgroundColor = "lightgoldenrodyellow";
-    op2.style.backgroundColor = "lightskyblue";
-    op3.style.backgroundColor = "lightskyblue";
-    op4.style.backgroundColor = "lightskyblue";
-    selected = op1.value;
-  });
-
-  op2.addEventListener("click", () => {
-    op1.style.backgroundColor = "lightskyblue";
-    op2.style.backgroundColor = "lightgoldenrodyellow";
-    op3.style.backgroundColor = "lightskyblue";
-    op4.style.backgroundColor = "lightskyblue";
-    selected = op2.value;
-  });
-
-  op3.addEventListener("click", () => {
-    op1.style.backgroundColor = "lightskyblue";
-    op2.style.backgroundColor = "lightskyblue";
-    op3.style.backgroundColor = "lightgoldenrodyellow";
-    op4.style.backgroundColor = "lightskyblue";
-    selected = op3.value;
-  });
-
-  op4.addEventListener("click", () => {
-    op1.style.backgroundColor = "lightskyblue";
-    op2.style.backgroundColor = "lightskyblue";
-    op3.style.backgroundColor = "lightskyblue";
-    op4.style.backgroundColor = "lightgoldenrodyellow";
-    selected = op4.value;
-  });
-
-  const evaluate = document.getElementsByClassName("evaluate");
-
-  evaluate[0].addEventListener("click", () => {
-    if (selected == "true") {
-      result[0].innerHTML = "True";
-      result[0].style.color = "green";
-    } else {
-      result[0].innerHTML = "False";
-      result[0].style.color = "red";
-    }
-  });
-}
-
-if (start) {
-  iterate("0");
-}
-
-const next = document.getElementsByClassName("next")[0];
-var id = 0;
-
-next.addEventListener("click", () => {
-  start = false;
-  if (id < 2) {
-    id++;
-    iterate(id);
-    console.log(id);
-  }
-});
+// display quiz
+populate();
