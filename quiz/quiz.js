@@ -89,7 +89,7 @@ var questions = [
     ["Obama", "Babiš", "Biden", "Trump"],
     "Django"
   ),
-  new Question("What is 2+2", ["5", "22", "44", "2"], "2"),
+  new Question("What is 2+2", ["5", "22", "44", "4"], "4"),
   new Question(
     "what is 785 * 999?",
     ["458 548 246", "784 215", "475 556", "none"],

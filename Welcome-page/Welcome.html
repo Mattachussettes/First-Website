@@ -11,116 +11,38 @@
   </head>
 
   <body>
-    <h1>How did you get to this website???</h1>
-    <p id="msg">
-      <strong>Hello</strong>
-    </p>
+    <input class="menu-icon" type="checkbox" id="menu-icon" name="menu-icon" />
+    <label for="menu-icon"></label>
+    <nav class="nav">
+      <ul class="pt-5">
+        <li><a href="https://gymsenpk.edupage.org/?">School</a></li>
+        <li><a href="https://www.youtube.com/watch?v=7dnCUnh6yFs">Video</a></li>
+        <li>
+          <a
+            href="https://www.youtube.com/watch?v=8ofCZObsnOo&list=RDtkwanZnJv7s&index=3"
+            >Music</a
+          >
+        </li>
+        <li><a href="https://youtu.be/xvFZjo5PgG0">DON'T PUSH</a></li>
+        <li><a href="../Jokes/jokes.html">Jokes</a></li>
+        <li><a href="../To-Do-List/To-Do-List.html">To do list</a></li>
+        <li><a href="../Buttons/buttons.html">Buttons</a></li>
+        <li><a href="../quiz/quiz.html">Quiz</a></li>
+        <li>
+          <a href="../simple-generator-meme/simple-generator-meme.html">Meme</a>
+        </li>
+        <li><a href="../musicplayer/musicplayer.html">Music player</a></li>
+        <li><a href="Discovery">Rocket</a></li>
+        <li><a href="/password/password.html">Simple Password generator</a></li>
+      </ul>
+    </nav>
 
-    <p>Good Morning</p>
-    <p>Good Evening</p>
-    <p>Good Night</p>
-
-    <div class="buttons">
-      <button>
-        <a href="https://gymsenpk.edupage.org/?">School</a>
-      </button>
-      <button>
-        <a href="https://www.youtube.com/watch?v=7dnCUnh6yFs"> Video </a>
-      </button>
-
-      <button>
-        <a
-          href="https://www.youtube.com/watch?v=8ofCZObsnOo&list=RDtkwanZnJv7s&index=3"
-          >Music</a
-        >
-      </button>
-      <button>
-        <a href="https://youtu.be/xvFZjo5PgG0" target="_blank"> DON'T PUSH </a>
-      </button>
-
-      <button>
-        <a href="../Jokes/jokes.html"> Jokes</a>
-      </button>
-
-      <button>
-        <a href="../To-Do-List/To-Do-List.html"> To Do list </a>
-      </button>
-
-      <button>
-        <a href="../Buttons/buttons.html"> Buttons</a>
-      </button>
-
-      <button>
-        <a href="../quiz/quiz.html"> Quiz</a>
-      </button>
-
-      <button>
-        <a href="../simple-generator-meme/simple-generator-meme.html"> Meme </a>
-      </button>
-
-      <button>
-        <a href="../musicplayer/musicplayer.html">Music Player</a>
-      </button>
-
-      <button>
-        <a href="/Discovery/discovery.html">Discovery</a>
-      </button>
-
-      <button>
-        <a href="/countdown/countdown.html">Countdown</a>
-      </button>
-
-      <button>
-        <a href="/password/password.html">Simple Password generator</a>
-      </button>
+    <div class="section-center">
+      <h1 class="mb-0">Welcome</h1>
     </div>
 
     <video autoplay muted loop id="myvideo">
-      <source src="video.mp4" type="video/mp4" />
+      <source src="stagelights.mp4" type="video/mp4" />
     </video>
 
-    <button id="demo" onclick="myFunction()">Countdown</button>
-  </body>
-  <script>
-    function myFunction() {
-      var input = prompt(
-        "When do you... I don't remember the answer",
-        "MMM DD, YYYY HH:MM:SS"
-      );
-
-      // date we're counting down to
-      var countDownDate = new Date(input).getTime();
-
-      // Update every 1 second
-      var x = setInterval(function () {
-        // today's date and time
-        var now = new Date().getTime();
-
-        //distance between now and the count down date
-        var distance = countDownDate - now;
-
-        // Time calculations for days, hours, minutes and seconds
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor(
-          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        // Display the result
-        document.getElementById("demo").innerHTML =
-          days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-
-        // count down is finished, write
-        if (distance < 0) {
-          clearInterval(x);
-          document.getElementById("demo").innerHTML = "Happy Birthday!!!";
-        }
-      }, 1000);
-
-      document.getElementById("demo").addEventListener("click", (event) => {
-        clearInterval(x);
-      });
-    }
-  </script>
 </html>
