@@ -1,10 +1,11 @@
 body {
   text-shadow: none;
-  color: green;
+  color: blue;
 }
 
 h1 {
-  color: black;
+  color: green;
+  font-family: Comic Sans MS;
 }
 
 html {
@@ -20,6 +21,13 @@ html {
   background-position: 0 20%, 0 100%, 0 50%, 0 100%, 0 0;
   background-size: 2500px, 800px, 500px 200px, 1000px, 400px 260px;
   animation: 50s para infinite linear;
+  position: relative;
+}
+
+div.content {
+  position: absolute;
+  backdrop-filter: blur(10px) brightness(90%);
+  border-radius: 10px;
 }
 
 @keyframes para {

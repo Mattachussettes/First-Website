@@ -1,48 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>music player</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MusicPlayer</title>
-
-    <link rel="stylesheet" href="musicplayer.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="musicplayer.css" />
   </head>
+
   <body>
-    <div class="player">
-      <div class="main">
-        <audio></audio>
-        <div class="thumbnail">
-          <img src="" />
-        </div>
-        <div class="seekbar">
-          <input type="range" />
-        </div>
-        <div class="details">
-          <h2></h2>
-          <p></p>
-        </div>
-        <div class="controls">
-          <div class="prev-control">
-            <i class="fa fa-backward"></i>
-          </div>
-          <div class="play-pause-control paused">
-            <i class="fa fa-play"></i>
-            <i class="fa fa-pause"></i>
-          </div>
-          <div class="next-control">
-            <i class="fa fa-forward"></i>
-          </div>
+    <div class="main">
+      <p id="logo"><i class="fa fa-music"></i>Matron</p>
+
+      <div class="left">
+        <img id="track_image" />
+        <div class="volume">
+          <p id="volume_show">90</p>
+          <i
+            class="fa fa-volume-up"
+            aria-hidden="true"
+            onclick="mute_sound()"
+            id="volume_icon"
+          ></i>
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value="90"
+            onchange="volume_change()"
+            id="volume"
+          />
         </div>
       </div>
-      <div class="player-list">
-        <div class="toggle-list">
-          <i class="fa fa-angle-up"></i>
-          <i class="fa fa-angle-down"></i>
+
+      <div class="right">
+        <div class="show_song_no">
+          <p id="present">1</p>
+          <p>/</p>
+          <p id="total">5</p>
         </div>
-        <div class="list"></div>
+
+        <p id="title">Avicii.mp3</p>
+        <p id="artist">Artist name</p>
+
+        <div class="middle">
+          <button onclick="previous_song()" id="pre">
+            <i class="fa fa-step-backward" aria-hidden="true"></i>
+          </button>
+          <button onclick="justplay()" id="play">
+            <i class="fa fa-play" aria-hidden="true"></i>
+          </button>
+          <button onclick="next_song()" id="next">
+            <i class="fa fa-step-forward" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <div class="duration">
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value="0"
+            id="duration_slider"
+            onchange="change_duration()"
+          />
+        </div>
+        <button id="auto" onclick="autoplay_switch()">
+          Auto play <i class="fa fa-circle-o-notch" aria-hidden="true"></i>
+        </button>
       </div>
     </div>
+
+    <script src="musicplayer.js"></script>
   </body>
-  <script src="musicplayer.js"></script>
 </html>
